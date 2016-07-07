@@ -6,24 +6,24 @@ namespace Savage.Formatters
 {
     // This project can output the Class library as a NuGet Package.
     // To enable this option, right-click on the project and select the Properties menu item. In the Build tab select "Produce outputs on build".
-    public class PhoneNumberFormatter
+    public class PhoneNumber
     {
-        public PhoneNumberFormatter(string phoneNumber, string defaultCountryCode)
+        public PhoneNumber(string phoneNumber, string defaultCountryCode)
         {
             defaultCountryCode = Regex.Replace(defaultCountryCode, "^00", "+");
-            PhoneNumber = phoneNumber.ToUpperInvariant().Trim();
+            Input = phoneNumber.ToUpperInvariant().Trim();
             //Check if the phone number contains a country code
             string match = GetSegment(@"^(\+|00)(?'number'[0-9]{1,3})");
 
             CountryCode = string.IsNullOrEmpty(match) ? defaultCountryCode : string.Format("+{0}", match);
         }
 
-        private string PhoneNumber { get; }
+        private string Input { get; }
         public string CountryCode { get; }
 
         private string GetSegment(string pattern)
         {
-            Match match = Regex.Match(PhoneNumber, pattern);
+            Match match = Regex.Match(Input, pattern);
 
             if (match.Groups["number"] != null)
                 return match.Groups["number"].Value;
@@ -39,7 +39,7 @@ namespace Savage.Formatters
 
         public static string ToInternationalFormat(string phoneNumber, string defaultCountryCode)
         {
-            PhoneNumberFormatter utility = new PhoneNumberFormatter(phoneNumber, defaultCountryCode);
+            PhoneNumber utility = new PhoneNumber(phoneNumber, defaultCountryCode);
             return utility.ToInternationalFormat();
         }
 
