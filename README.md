@@ -1,6 +1,6 @@
 # phone_number
 
-This project is a .NET Core class library.
+This project is a .NET Standard 2.0 Class Library.
 
 This project is designed to help developers when working with phone numbers which users may enter in a variety of formats, and provides helper methods to clean the phone number into a standard and consistent format.
 
