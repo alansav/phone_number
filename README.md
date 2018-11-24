@@ -1,5 +1,7 @@
 # phone_number
 
+[![Build status](https://ci.appveyor.com/api/projects/status/0w8rx2tbr4whr0ud?svg=true)](https://ci.appveyor.com/project/alansav/phone-number)
+
 This project is a .NET Standard 2.0 Class Library.
 
 This project is designed to help developers when working with phone numbers which users may enter in a variety of formats, and provides helper methods to clean the phone number into a standard and consistent format.

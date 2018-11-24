@@ -3,15 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26228.4
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{EC8D65F2-013B-42E7-8DDA-DD63CCD7F6FF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Savage.PhoneNumber.UnitTests", "Savage.PhoneNumber.UnitTests\Savage.PhoneNumber.UnitTests.csproj", "{F4F88F18-6A5A-4102-B291-AA8897A9B35C}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{FCBC360D-0DC8-4128-A5D8-112AC5B79CEA}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{7712B84F-8042-4E7F-934B-EE13CF4F1232}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTests", "test\UnitTests\UnitTests.csproj", "{F4F88F18-6A5A-4102-B291-AA8897A9B35C}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhoneNumber", "src\PhoneNumber\PhoneNumber.csproj", "{94EE2F24-6EE3-4051-81B4-84C292C33ECB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Savage.PhoneNumber", "Savage.PhoneNumber\Savage.PhoneNumber.csproj", "{94EE2F24-6EE3-4051-81B4-84C292C33ECB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -30,9 +24,5 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{F4F88F18-6A5A-4102-B291-AA8897A9B35C} = {7712B84F-8042-4E7F-934B-EE13CF4F1232}
-		{94EE2F24-6EE3-4051-81B4-84C292C33ECB} = {EC8D65F2-013B-42E7-8DDA-DD63CCD7F6FF}
 	EndGlobalSection
 EndGlobal

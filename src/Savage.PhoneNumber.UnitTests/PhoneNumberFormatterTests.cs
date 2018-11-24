@@ -1,13 +1,13 @@
 ﻿using Xunit;
 
-namespace Savage.Formatters
+namespace Savage.PhoneNumber
 {
-    public class PhoneNumberTest
+    public class PhoneNumberFormatterTest
     {
         [Fact]
         public void PhoneNumberConstructor()
         {
-            PhoneNumber pn = new PhoneNumber("07712345678", "0044");
+            var pn = new PhoneNumberFormatter("07712345678", "0044");
             Assert.Equal("+44", pn.CountryCode);
             Assert.Equal("", pn.AreaCode);
             Assert.Equal("", pn.Extension);
@@ -21,14 +21,14 @@ namespace Savage.Formatters
         [Fact]
         public void StaticToInternationalFormat()
         {
-            string sut = PhoneNumber.ToInternationalFormat("07712345678", "0044");
+            string sut = PhoneNumberFormatter.ToInternationalFormat("07712345678", "0044");
             Assert.Equal("+44 7712345678", sut);
         }
 
         [Fact]
         public void InternationalWithPlusSign()
         {
-            PhoneNumber pn = new PhoneNumber("+44 1234 123456", "+44");
+            var pn = new PhoneNumberFormatter("+44 1234 123456", "+44");
 
             Assert.Equal("+44", pn.CountryCode);
             Assert.Equal("1234", pn.AreaCode);
@@ -44,7 +44,7 @@ namespace Savage.Formatters
         [Fact]
         public void InternationalWithDoubleZeros()
         {
-            PhoneNumber pn = new PhoneNumber("0044 1234 123456", "+44");
+            var pn = new PhoneNumberFormatter("0044 1234 123456", "+44");
 
             Assert.Equal("+44", pn.CountryCode);
             Assert.Equal("1234", pn.AreaCode);
@@ -60,7 +60,7 @@ namespace Savage.Formatters
         [Fact]
         public void SingleDigitInternationWithPlusSign()
         {
-            PhoneNumber pn = new PhoneNumber("+1 1234 123456", "+44");
+            var pn = new PhoneNumberFormatter("+1 1234 123456", "+44");
 
             Assert.Equal("+1", pn.CountryCode);
             Assert.Equal("1234", pn.AreaCode);
@@ -76,7 +76,7 @@ namespace Savage.Formatters
         [Fact]
         public void SingleDigitInternationalWithDoubleZeros()
         {
-            PhoneNumber pn = new PhoneNumber("001 1234 123456", "+44");
+            var pn = new PhoneNumberFormatter("001 1234 123456", "+44");
 
             Assert.Equal("+1", pn.CountryCode);
             Assert.Equal("1234", pn.AreaCode);
@@ -92,7 +92,7 @@ namespace Savage.Formatters
         [Fact]
         public void InternationalWithBracketsNoSpaces()
         {
-            PhoneNumber pn = new PhoneNumber("001(1234)123456", "+44");
+            var pn = new PhoneNumberFormatter("001(1234)123456", "+44");
 
             Assert.Equal("+1", pn.CountryCode);
             Assert.Equal("1234", pn.AreaCode);
@@ -108,7 +108,7 @@ namespace Savage.Formatters
         [Fact]
         public void NationalWithBracketsAndExtension()
         {
-            PhoneNumber pn = new PhoneNumber("(01234) 123456 Ext. 123", "+44");
+            var pn = new PhoneNumberFormatter("(01234) 123456 Ext. 123", "+44");
 
             Assert.Equal("+44", pn.CountryCode);
             Assert.Equal("1234", pn.AreaCode);
@@ -124,7 +124,7 @@ namespace Savage.Formatters
         [Fact]
         public void NationalWithBracketsAndSpaces()
         {
-            PhoneNumber pn = new PhoneNumber("(01234) 123 4567", "+44");
+            var pn = new PhoneNumberFormatter("(01234) 123 4567", "+44");
 
             Assert.Equal("+44", pn.CountryCode);
             Assert.Equal("1234", pn.AreaCode);
@@ -140,7 +140,7 @@ namespace Savage.Formatters
         [Fact]
         public void MobileNumber()
         {
-            PhoneNumber pn = new PhoneNumber("07712345678", "+44");
+            var pn = new PhoneNumberFormatter("07712345678", "+44");
 
             Assert.Equal("+44", pn.CountryCode);
             Assert.Equal("", pn.AreaCode);
@@ -155,7 +155,7 @@ namespace Savage.Formatters
         [Fact]
         public void InternationalMobileNumber()
         {
-            PhoneNumber pn = new PhoneNumber("+44 7712345678", "+44");
+            var pn = new PhoneNumberFormatter("+44 7712345678", "+44");
 
             Assert.Equal("+44", pn.CountryCode);
             Assert.Equal("", pn.AreaCode);
@@ -170,7 +170,7 @@ namespace Savage.Formatters
         [Fact]
         public void InternationalNoBrackets()
         {
-            PhoneNumber pn = new PhoneNumber("+44 115 123 4567", "+44");
+            var pn = new PhoneNumberFormatter("+44 115 123 4567", "+44");
 
             Assert.Equal("+44", pn.CountryCode);
             Assert.Equal("115", pn.AreaCode);
@@ -186,7 +186,7 @@ namespace Savage.Formatters
         [Fact]
         public void InternationalBracketsNoSpaces()
         {
-            PhoneNumber pn = new PhoneNumber("+44 (115) 123 4567", "+44");
+            var pn = new PhoneNumberFormatter("+44 (115) 123 4567", "+44");
 
             Assert.Equal("+44", pn.CountryCode);
             Assert.Equal("115", pn.AreaCode);
@@ -202,7 +202,7 @@ namespace Savage.Formatters
         [Fact]
         public void InternationalWithThreeDigitNationalNoBrackets()
         {
-            PhoneNumber pn = new PhoneNumber("+44 115 1234567", "+44");
+            var pn = new PhoneNumberFormatter("+44 115 1234567", "+44");
 
             Assert.Equal("+44", pn.CountryCode);
             Assert.Equal("115", pn.AreaCode);
@@ -218,7 +218,7 @@ namespace Savage.Formatters
         [Fact]
         public void InternationalWithBrackets()
         {
-            PhoneNumber pn = new PhoneNumber("+44 (115) 1234567", "+44");
+            var pn = new PhoneNumberFormatter("+44 (115) 1234567", "+44");
 
             Assert.Equal("+44", pn.CountryCode);
             Assert.Equal("115", pn.AreaCode);
@@ -234,7 +234,7 @@ namespace Savage.Formatters
         [Fact]
         public void FourDigitNationalWithBrackets()
         {
-            PhoneNumber pn = new PhoneNumber("(0115) 123 4567", "+44");
+            var pn = new PhoneNumberFormatter("(0115) 123 4567", "+44");
 
             Assert.Equal("+44", pn.CountryCode);
             Assert.Equal("115", pn.AreaCode);
@@ -250,7 +250,7 @@ namespace Savage.Formatters
         [Fact]
         public void FiveDigitNationalWithBrackets()
         {
-            PhoneNumber pn = new PhoneNumber("(01773) 123456", "+44");
+            var pn = new PhoneNumberFormatter("(01773) 123456", "+44");
 
             Assert.Equal("+44", pn.CountryCode);
             Assert.Equal("1773", pn.AreaCode);
@@ -266,7 +266,7 @@ namespace Savage.Formatters
         [Fact]
         public void FiveDigitNationalNoBrackets()
         {
-            PhoneNumber pn = new PhoneNumber("01773 123456", "+44");
+            var pn = new PhoneNumberFormatter("01773 123456", "+44");
 
             Assert.Equal("+44", pn.CountryCode);
             Assert.Equal("1773", pn.AreaCode);

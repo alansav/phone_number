@@ -1,7 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <VersionPrefix>1.1.0</VersionPrefix>
     <TargetFrameworks>netstandard2.0;net45;net46;</TargetFrameworks>
     <Title>Phone Number</Title>
     <Authors>Alan Savage</Authors>
@@ -10,6 +9,14 @@
     <PackageProjectUrl>https://github.com/alansav/phone_number</PackageProjectUrl>
     <RepositoryUrl>https://github.com/alansav/phone_number</RepositoryUrl>
     <PackageTags>Phone number formatter</PackageTags>
+    <PackageId>PhoneNumber</PackageId>
+    <Product>Savage.PhoneNumber</Product>
+    <!-- Version elements are intentionally empty as they are provided by the build process-->
+    <Version></Version>
+    <PackageVersion></PackageVersion>
+    <AssemblyVersion></AssemblyVersion>
+    <FileVersion></FileVersion>
+    <InformationalVersion></InformationalVersion>
   </PropertyGroup>
 
 </Project>

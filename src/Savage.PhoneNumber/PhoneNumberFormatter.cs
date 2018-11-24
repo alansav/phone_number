@@ -1,14 +1,11 @@
-﻿using System;
+﻿using System.Text;
 using System.Text.RegularExpressions;
-using System.Text;
 
-namespace Savage.Formatters
+namespace Savage.PhoneNumber
 {
-    // This project can output the Class library as a NuGet Package.
-    // To enable this option, right-click on the project and select the Properties menu item. In the Build tab select "Produce outputs on build".
-    public class PhoneNumber
+    public class PhoneNumberFormatter
     {
-        public PhoneNumber(string phoneNumber, string defaultCountryCode)
+        public PhoneNumberFormatter(string phoneNumber, string defaultCountryCode)
         {
             defaultCountryCode = Regex.Replace(defaultCountryCode, "^00", "+");
             Input = phoneNumber.ToUpperInvariant().Trim();
@@ -39,55 +36,55 @@ namespace Savage.Formatters
 
         public static string ToInternationalFormat(string phoneNumber, string defaultCountryCode)
         {
-            PhoneNumber utility = new PhoneNumber(phoneNumber, defaultCountryCode);
-            return utility.ToInternationalFormat();
+            var formatter = new PhoneNumberFormatter(phoneNumber, defaultCountryCode);
+            return formatter.ToInternationalFormat();
         }
 
         public string ToInternationalFormat()
         {
             StringBuilder result = new StringBuilder();
 
-            result.Append(String.Format("{0} ", CountryCode));
+            result.Append($"{CountryCode} ");
 
-            if (AreaCode != String.Empty)
-                result.Append(String.Format("({0}) ", AreaCode));
+            if (AreaCode != string.Empty)
+                result.Append($"({AreaCode}) ");
 
             result.Append(LocalNumber);
 
-            if (Extension != String.Empty)
-                result.Append(String.Format("x{0}", Extension));
+            if (Extension != string.Empty)
+                result.Append($"x{Extension}");
 
             return result.ToString();
         }
-
+        
         public string ToDialFormat(string fromCountryCode, string idPrefix, string fromAreaCode, string ndPrefix)
         {
             StringBuilder result = new StringBuilder();
 
             if (CountryCode != fromCountryCode)
             {
-                result.Append(String.Format("{0} ", CountryCode.Replace("+", idPrefix)));
-                if (AreaCode != String.Empty)
+                result.Append($"{CountryCode.Replace("+", idPrefix)} ");
+                if (AreaCode != string.Empty)
                 {
-                    result.Append(String.Format("({0}) ", AreaCode));
+                    result.Append($"({AreaCode}) ");
                 }
             }
             else
             {
-                if (AreaCode == String.Empty)
+                if (AreaCode == string.Empty)
                 {
                     result.Append(ndPrefix);
                 }
                 else if (AreaCode != fromAreaCode)
                 {
-                    result.Append(String.Format("({0}{1}) ", ndPrefix, AreaCode));
+                    result.Append($"({ndPrefix}{AreaCode}) ");
                 }
             }
 
             result.Append(LocalNumber);
 
-            if (Extension != String.Empty)
-                result.Append(String.Format("x{0}", Extension));
+            if (Extension != string.Empty)
+                result.Append($"x{Extension}");
 
             return result.ToString();
         }
